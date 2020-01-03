@@ -1,5 +1,4 @@
 PC Shutdown
-Version: 2020-01-03
 
 Created by: Kristjan Sigurdsson
 https://github.com/kristsig
