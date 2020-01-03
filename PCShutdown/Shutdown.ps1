@@ -1,6 +1,6 @@
 Clear-Host
 Function Stop-Computers{
-   $FileName = "C:\temp\ComputerList.txt"
+   $FileName = "C:\temp\HostList.txt"
    if([System.IO.File]::Exists($FileName)){
       $tempList = Get-Content @($FileName)
       $tempList | ForEach-Object{
@@ -9,10 +9,10 @@ Function Stop-Computers{
             $SecondCommand = ("""Stop-Computer $_""")
             Write-Host "Stopping: $_"
             try{
-               Start-Process powershell.exe -ArgumentList $FisrtsCommand
+               Start-Process -WindowStyle Hidden powershell.exe -ArgumentList $FisrtsCommand
             }Catch{}
             try{
-               Start-Process powershell.exe -ArgumentList $SecondCommand
+               Start-Process -WindowStyle Hidden powershell.exe -ArgumentList $SecondCommand
             }Catch{}
          }
       }

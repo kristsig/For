@@ -1,6 +1,6 @@
 Clear-Host
 Function Restart-Computers{
-   $FileName = "C:\temp\ComputerList.txt"
+   $FileName = "C:\temp\HostList.txt"
    if([System.IO.File]::Exists($FileName)){
       $tempList = Get-Content @($FileName)
       $tempList | ForEach-Object{
@@ -9,10 +9,10 @@ Function Restart-Computers{
             $SecondCommand = ("""Restart-Computer $_""")
             Write-Host "Restarting: $_"
             try{
-               Start-Process powershell.exe -ArgumentList $FisrtsCommand
+               Start-Process -WindowStyle Hidden powershell.exe -ArgumentList $FisrtsCommand
             }Catch{}
             try{
-               Start-Process powershell.exe -ArgumentList $SecondCommand
+               Start-Process -WindowStyle Hidden powershell.exe -ArgumentList $SecondCommand
             }Catch{}
          }
       }
